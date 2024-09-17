@@ -1,21 +1,18 @@
-import { Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import PostCard from "./components/PostCard";
 import { posts } from "./data";
 
 export default function Home() {
 
+    const postsList = posts;
+
   return (
-    <main>
-      {posts.map((post) => (
-          <Stack spacing={2} key={post.id}>
-              <Typography key={post.id} variant="h4">
-                {post.title}
-              </Typography>
-              <Typography key={post.id} variant="body1">
-                {post.content}
-              </Typography>
-          </Stack>
-            ))}
-    </main>    
-    
+       <main>
+        <Typography variant="h1">Welcome to my blog posts page</Typography>
+
+        {postsList.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+       </main>
   );
 }
