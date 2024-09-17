@@ -1,3 +1,5 @@
+"use client"
+
 import { Typography } from "@mui/material";
 import PostCard from "./components/PostCard";
 import { posts } from "./data";
