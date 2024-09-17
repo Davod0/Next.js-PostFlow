@@ -5,7 +5,7 @@ export interface Post {
     author: string;
 }
 
-export const posts: Post[] = [
+export const mockedPosts: Post[] = [
     {
         id: 1,
         title: "My First Blog Post",

@@ -2,15 +2,16 @@
 
 import { Box } from "@mui/material";
 import PostCard from "./components/PostCard";
-import { posts } from "./data";
+import { PostForm } from "./components/PostForm";
+import { mockedPosts } from "./data";
 
 export default function Home() {
-
-  const postsList = posts;
-
+  
+  // Måste fixas så att när nya posts addas i listan genom PostForm ska de visas direkt här i start sidan
   return (
        <Box sx={{ paddingTop:'100px'}}>
-        {postsList.map((post) => (
+        <PostForm />
+        {mockedPosts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
        </Box>
