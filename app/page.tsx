@@ -1,7 +1,7 @@
 "use client"
 
+import { Box } from "@mui/material";
 import PostCard from "./components/PostCard";
-import ShowHeader from "./components/ShowHeader";
 import { posts } from "./data";
 
 export default function Home() {
@@ -9,10 +9,12 @@ export default function Home() {
   const postsList = posts;
 
   return (
-       <main>
+       <Box sx={{ paddingTop: '100px' }}>
         {postsList.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
-       </main>
+
+       </Box>
   );
 }
+1
