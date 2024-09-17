@@ -1,5 +1,6 @@
 import { CssBaseline } from "@mui/material";
 import type { Metadata } from "next";
+import ShowHeader from "./components/ShowHeader";
 
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CssBaseline/>
+        <ShowHeader/>
         {children}
       </body>
     </html>

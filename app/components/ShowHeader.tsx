@@ -9,6 +9,8 @@ export default function ShowHeader() {
             alignItems: 'center',
             backgroundColor: '#f0f0f0',
             padding: 2, 
+            position:'fixed',
+            width: '100%',
         }}>
             <Typography variant="h3" component="h1" sx={{
                 color: '#333', 

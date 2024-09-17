@@ -10,7 +10,6 @@ export default function Home() {
 
   return (
        <main>
-        <ShowHeader/>
         {postsList.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
