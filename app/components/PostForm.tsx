@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { Button, Grid2, Stack, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { StorePostInDb } from "../action";
@@ -32,26 +32,43 @@ export function PostForm(){
         };
         updatePostList(newPost);
         await StorePostInDb(newPost);
-        };
+    };
     
-    return(
-        <Stack component="form" gap={4} onSubmit={form.handleSubmit(registerPost)}>
-            <Typography variant="h3">Add a new post</Typography>
 
-            <TextField label="title" {...form.register("title")} 
-            error={Boolean(form.formState.errors.title)}
-            helperText={form.formState.errors.title?.message}/>
-
-            <TextField label="content" {...form.register("content")}
-            error={Boolean(form.formState.errors.content)}
-            helperText={form.formState.errors.content?.message}/>
-
-            <TextField label="author" {...form.register("author")}
-            error={Boolean(form.formState.errors.author)}
-            helperText={form.formState.errors.author?.message}/>
-
-            <Button variant="contained" type="submit">Register</Button>
-      </Stack>
-    );
-
+return (
+    <Grid2 container spacing={4} sx={{ padding: '2rem' }}>
+        <Stack component="form" gap={4} onSubmit={form.handleSubmit(registerPost)}
+                sx={{ 
+                    padding: '2rem', 
+                    backgroundColor: 'background.paper', 
+                    boxShadow: 3, 
+                    borderRadius: 2 
+                }}>
+                <Typography variant="h4" align="center" gutterBottom>
+                    Add a New Post
+                </Typography>
+                <TextField label="Title" variant="outlined" {...form.register("title")}
+                    error={Boolean(form.formState.errors.title)}
+                    helperText={form.formState.errors.title?.message}
+                    fullWidth
+                />
+                <TextField label="Content" variant="outlined" {...form.register("content")}
+                    error={Boolean(form.formState.errors.content)}
+                    helperText={form.formState.errors.content?.message}
+                    fullWidth
+                    multiline
+                    rows={4}
+                />
+                <TextField label="Author" variant="outlined" {...form.register("author")}
+                    error={Boolean(form.formState.errors.author)}
+                    helperText={form.formState.errors.author?.message}
+                    fullWidth
+                />
+                <Button variant="contained" color="primary" type="submit" size="large"
+                    sx={{ mt: 2, alignSelf: 'center', width: '50%' }}>
+                    Add
+                </Button>
+            </Stack>
+    </Grid2>
+);
 }
