@@ -1,6 +1,8 @@
-import { mockedPosts, Post } from "./data";
+"use server"
 
+import { Post } from "./data";
 
-export function StorePost(post: Post) {
-    mockedPosts.push(post);
+export async function StorePostInDb(post: Post) {
+    //Här ska datan skickas till servern
+    return post;
 } 
