@@ -2,8 +2,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { StorePost } from "../action";
+import { StorePostInDb } from "../action";
 import { mockedPosts } from "../data";
+import { usePost } from "./PostProvider";
 
 export const PostSchema = z.object({
     title: z.string().min(3).max(100, {message: "not a valid tittle"}),
@@ -14,22 +15,23 @@ export const PostSchema = z.object({
 export type Post = z.infer<typeof PostSchema>
 
 export function PostForm(){
-    
+
+    const { updatePostList } = usePost();
+
     const form = useForm<Post>({
       resolver: zodResolver(PostSchema),
       mode: "onBlur"
     });
 
-    const registerPost = (data: Post) => {
+    const registerPost = async (data: Post) => {
         const newPost = {
             id: mockedPosts.length + 1,
             title: data.title,
             content: data.content,
             author: data.author,
         };
-
-        StorePost(newPost);
-        mockedPosts.map((post) => {console.log(post);});
+        updatePostList(newPost);
+        await StorePostInDb(newPost);
         };
     
     return(

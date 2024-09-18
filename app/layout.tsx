@@ -1,5 +1,6 @@
 import { CssBaseline } from "@mui/material";
 import type { Metadata } from "next";
+import PostProvider from "./components/PostProvider";
 import ShowHeader from "./components/ShowHeader";
 
 
@@ -17,8 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CssBaseline/>
-        <ShowHeader/>
-        {children}
+        <PostProvider>
+          <ShowHeader/>
+          {children}
+        </PostProvider>
       </body>
     </html>
   );
